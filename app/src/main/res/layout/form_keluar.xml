@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:focusableInTouchMode="true"
+    android:clickable="true"
+    android:id="@+id/layoutnya"
+
+    >
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/kuning"
+            android:padding="5dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="From untuk orang Keluar daerah."
+                android:textStyle="italic"
+                android:textSize="10dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/customborder"
+            android:layout_marginTop="5dp"
+            >
+
+
+
+
+        <!--
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tempat_lahir"
+                android:hint="Tempat Lahir"
+                android:imeOptions="actionDone"
+                />
+
+
+            <EditText
+                android:id="@+id/tgl_lahir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:hint="Tanggal Lahir"
+                />
+                -->
+
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/luar_hh"
+                android:hint="Daerah Tujuan"
+                android:imeOptions="actionDone"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/customborder"
+            android:layout_margin="5dp"
+            >
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nama Sesuai Identitas"
+                android:id="@+id/nama"
+                android:inputType="text"
+                android:imeOptions="actionDone"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/no_hp"
+                android:hint="No HP"
+                android:inputType="number"
+                android:imeOptions="actionDone"
+                android:layout_marginBottom="15dp"
+                />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Alamat"
+                android:inputType="textMultiLine"
+                android:gravity="top|left"
+                android:lines="3"
+                android:id="@+id/alamat"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daerah Asal - Kecamatan:"
+                android:layout_marginTop="25dp"
+                android:textSize="18dp"
+                />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnerKecamatan"
+                android:autofillHints="Kecamatan"
+                android:layout_marginBottom="25dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daerah Asal - Desa:"
+
+                android:textSize="18dp"
+                />
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnerDesa"
+                android:autofillHints="Desa"
+                android:layout_marginBottom="15dp"
+                />
+
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/dusun"
+                android:hint="Dusun"
+                android:imeOptions="actionDone"
+                android:layout_marginBottom="15dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/customborder"
+            android:layout_margin="5dp"
+            >
+
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/suhu_badan"
+                android:hint="Suhu Badan"
+                android:inputType="numberDecimal|numberSigned"
+                android:imeOptions="actionDone"
+                android:layout_marginBottom="15dp"
+                />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Keterangan"
+                android:inputType="textMultiLine"
+                android:gravity="top|left"
+                android:lines="3"
+                android:id="@+id/keterangan"
+                android:layout_marginBottom="15dp"
+                />
+
+            <!--
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:orientation="vertical"
+                    >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ambil Foto KTP"
+                android:textStyle="italic"
+                android:textSize="10dp"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/foto_ktp"
+                android:src="@drawable/noimage"
+                android:scaleType="centerCrop"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/t4_foto_ktp"
+                android:visibility="gone"
+                />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:orientation="vertical"
+                    >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ambil Foto Orang"
+                android:textStyle="italic"
+                android:textSize="10dp"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/foto_orang"
+                android:src="@drawable/noimage"
+                android:scaleType="centerCrop"
+
+                />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/t4_foto_orang"
+                android:visibility="gone"
+                />
+                </LinearLayout>
+            </LinearLayout>
+            -->
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="20dp"
+                android:id="@+id/btnSimpan"
+                android:text="Simpan" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
+

@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:focusableInTouchMode="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="10dp"
+    android:background="#fff"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/customborder"
+        android:layout_marginTop="5dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="10"
+            >
+
+
+            <com.github.chrisbanes.photoview.PhotoView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/foto_ktp"
+                android:layout_weight="5"
+                android:src="@drawable/noimage"
+                android:scaleType="centerCrop"
+                />
+
+            <com.github.chrisbanes.photoview.PhotoView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/foto_orang"
+                android:layout_weight="5"
+                android:src="@drawable/noimage"
+                android:scaleType="centerCrop"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linear_klik"
+            >
+
+            <TextView
+                android:id="@+id/nama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:text="Nama Orangnya"
+                android:textSize="20dp"
+                android:textAllCaps="true"
+                />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="15"
+            >
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:padding="5dp"
+                android:text="HP"
+                android:layout_weight="10"
+                android:textAllCaps="true"
+                />
+
+
+            <TextView
+                android:id="@+id/no_hp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:text="087236423642"
+                android:layout_weight="5"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="15"
+            >
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:padding="5dp"
+                android:text="TTL"
+                android:layout_weight="10"
+                android:textAllCaps="true"
+                />
+
+
+            <TextView
+                android:id="@+id/ttl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:padding="5dp"
+                android:text="Medan, 1988-00-00"
+                android:layout_weight="5"
+                />
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="15"
+            >
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:padding="5dp"
+                android:text="Alamat"
+                android:layout_weight="10"
+                android:textAllCaps="true"
+                />
+
+
+            <TextView
+                android:id="@+id/alamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:padding="5dp"
+                android:text="Medan, 1988-00-00"
+                android:layout_weight="5"
+                />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="15"
+            >
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:padding="5dp"
+                android:text="Jenis"
+                android:layout_weight="10"
+                android:textAllCaps="true"
+                />
+
+
+            <TextView
+                android:id="@+id/jenis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:padding="5dp"
+                android:text="Masuk"
+                android:layout_weight="5"
+                />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="15"
+        >
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:padding="5dp"
+            android:text="Dari"
+            android:layout_weight="10"
+            android:textAllCaps="true"
+            />
+
+
+        <TextView
+            android:id="@+id/luar_hh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:padding="5dp"
+            android:text="Medan"
+            android:layout_weight="5"
+            />
+
+
+    </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="15"
+            >
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:padding="5dp"
+                android:text="Ke"
+                android:layout_weight="10"
+                android:textAllCaps="true"
+                />
+
+
+            <TextView
+                android:id="@+id/v_lokasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:padding="5dp"
+                android:text="Dolok Sanggul"
+                android:layout_weight="5"
+                />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="15"
+            >
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:padding="5dp"
+                android:text="Tgl"
+                android:layout_weight="10"
+                android:textAllCaps="true"
+                />
+
+
+            <TextView
+                android:id="@+id/tgl_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:text="2020-00-00 00:00:00"
+                android:layout_weight="5"
+                />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="15"
+            >
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:padding="5dp"
+                android:text="Ket."
+                android:layout_weight="10"
+                android:textAllCaps="true"
+                />
+
+
+            <TextView
+                android:id="@+id/keterangan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:padding="5dp"
+                android:text=""
+                android:layout_weight="5"
+                />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="15"
+            android:visibility="gone"
+            >
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:padding="5dp"
+                android:text="Sinkron"
+                android:layout_weight="10"
+                android:textAllCaps="true"
+                />
+
+
+            <TextView
+                android:id="@+id/sudah_sinkron"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:padding="5dp"
+                android:text=""
+                android:layout_weight="5"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="15"
+            android:visibility="gone"
+            >
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:padding="5dp"
+                android:text="LatLng"
+                android:layout_weight="10"
+                android:textAllCaps="true"
+                />
+
+
+            <TextView
+                android:id="@+id/latlng"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:padding="5dp"
+                android:text=""
+                android:layout_weight="5"
+                />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="15"
+            >
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:text="Suhu"
+                android:layout_weight="10"
+                android:textAllCaps="true"
+                />
+
+
+            <TextView
+                android:id="@+id/suhu_badan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:text="30.0"
+                android:layout_weight="5"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="15"
+            >
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:text="Penyakit"
+                android:layout_weight="10"
+                android:textAllCaps="true"
+                />
+
+
+            <TextView
+                android:id="@+id/kesehatan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:layout_weight="5"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="15"
+            >
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:text="Catatan Medis"
+                android:layout_weight="10"
+                android:textAllCaps="true"
+                />
+
+
+            <TextView
+                android:id="@+id/catatan_medis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:layout_weight="5"
+                />
+
+
+        </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="15"
+            >
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="#ff0000"
+                android:padding="5dp"
+                android:text="Status Akhir"
+                android:layout_weight="10"
+                android:textAllCaps="true"
+                />
+
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sinnerTindakLanjut"
+                android:layout_weight="5"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="15"
+            >
+
+            <TextView
+                android:layout_weight="10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+
+            <Button
+                android:id="@+id/simpanPemantauan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonku"
+                android:textColor="#ffffff"
+                android:padding="10dp"
+                android:layout_margin="2dp"
+                android:text="Update "
+                android:layout_weight="5"
+                />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+    </LinearLayout>

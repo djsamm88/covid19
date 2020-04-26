@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:focusableInTouchMode="true"
+
+    >
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/kuning"
+        android:padding="5dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Aplikasi pencatatan Keluar Masuk daerah."
+            android:textStyle="italic"
+
+            />
+
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/customborder"
+        android:layout_margin="5dp"
+        android:weightSum="10"
+        >
+
+
+        <Button
+            android:layout_weight="5"
+            android:background="@drawable/buttonku"
+            android:textColor="#ffffff"
+            android:padding="10dp"
+            android:layout_margin="2dp"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/btnFormKeluar"
+            android:text="Form  Keluar" />
+
+        <Button
+            android:layout_weight="5"
+            android:background="@drawable/buttonku"
+            android:textColor="#ffffff"
+            android:padding="10dp"
+            android:layout_margin="2dp"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/btnFormMasuk"
+            android:text="Form  Masuk" />
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/customborder"
+        android:layout_margin="5dp"
+        android:visibility="gone"
+        >
+        <Button
+            android:background="@drawable/buttonku"
+            android:textColor="#ffffff"
+            android:padding="10dp"
+            android:layout_margin="2dp"
+            android:id="@+id/btnSinkronisasiServer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Sinkonisasi ke Server"
+
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/customborder"
+        android:layout_margin="5dp"
+        android:weightSum="10"
+        >
+
+        <Button
+            android:background="@drawable/buttonku"
+            android:textColor="#ffffff"
+            android:padding="10dp"
+            android:layout_margin="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/btnLaporan_masuk"
+            android:text="Data Masuk"
+            android:layout_weight="5"
+            />
+
+
+        <Button
+            android:layout_weight="5"
+            android:background="@drawable/buttonku"
+            android:textColor="#ffffff"
+            android:padding="10dp"
+            android:layout_margin="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/btnLaporan_keluar"
+            android:text="Data Keluar" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/customborder"
+        android:layout_margin="5dp"
+        >
+
+        <Button
+            android:background="@drawable/buttonku"
+            android:textColor="#ffffff"
+            android:padding="10dp"
+            android:layout_margin="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/btnVerifikasi"
+            android:text="Verifikasi" />
+        <TextView
+            android:id="@+id/badgeVerifikasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/btnSakit"
+            android:layout_alignRight="@id/btnSakit"
+            android:text="10"
+            android:textColor="#000"
+            android:textSize="12sp"
+            android:background="@drawable/badge"
+            />
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/customborder"
+        android:layout_margin="5dp"
+        >
+
+        <Button
+            android:background="@drawable/buttonku"
+            android:textColor="#ffffff"
+            android:padding="10dp"
+            android:layout_margin="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/btnPemantauan"
+            android:text="Pemantauan" />
+        <TextView
+            android:id="@+id/badgePemantauan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/btnSakit"
+            android:layout_alignRight="@id/btnSakit"
+            android:text="10"
+            android:textColor="#000"
+            android:textSize="12sp"
+            android:background="@drawable/badge"
+            />
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/customborder"
+        android:layout_margin="5dp"
+        android:weightSum="10"
+        >
+
+        <Button
+            android:layout_weight="5"
+            android:background="@drawable/buttonku"
+            android:textColor="#ffffff"
+            android:padding="10dp"
+            android:layout_margin="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/btnSelesai"
+            android:text="Selesai" />
+
+
+        <Button
+            android:layout_weight="5"
+            android:background="@drawable/buttonku"
+            android:textColor="#ffffff"
+            android:padding="10dp"
+            android:layout_margin="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/btnSakit"
+            android:text="Sakit" />
+        <TextView
+            android:id="@+id/badgeSakit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/btnSakit"
+            android:layout_alignRight="@id/btnSakit"
+            android:text="10"
+            android:textColor="#000"
+            android:textSize="12sp"
+            android:background="@drawable/badge"
+            />
+
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/customborder"
+        android:layout_margin="5dp"
+        android:weightSum="9"
+        >
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@drawable/customborder"
+            android:layout_margin="5dp"
+            android:id="@+id/badgeODP"
+            android:textStyle="bold"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@drawable/customborder"
+            android:layout_margin="5dp"
+            android:id="@+id/badgeOTG"
+            android:textStyle="bold"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@drawable/customborder"
+            android:layout_margin="5dp"
+            android:id="@+id/badgePOSITIF_COVID19"
+            android:textStyle="bold"
+            />
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/customborder"
+        android:layout_margin="5dp"
+        android:weightSum="9"
+        >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/info_login"
+            android:text="Anda login sebagai : Testing"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+
+    </LinearLayout>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+
