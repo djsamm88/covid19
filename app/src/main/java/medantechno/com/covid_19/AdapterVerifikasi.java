@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,10 +27,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.chrisbanes.photoview.PhotoView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -172,8 +178,25 @@ public class AdapterVerifikasi extends BaseAdapter {
                 new DbTransaksi(activity).updateStatus(modelData);
 
                 Toast.makeText(view.getContext(), "Status Orang Berhasil diUpdate", Toast.LENGTH_SHORT).show();
-                activity.finish();
 
+
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("notif");
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        /** datetime sekarang **/
+                        Date c = Calendar.getInstance().getTime();
+                        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        final String tgl_updatenya = df.format(c);
+                        /** datetime sekarang **/
+                        myRef.setValue("Ada data Verifikasi baru, "+tgl_updatenya);
+                    }
+                }, 1000);
+
+
+                activity.finish();
 
             }
         });

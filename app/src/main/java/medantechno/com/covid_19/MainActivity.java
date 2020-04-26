@@ -69,6 +69,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -119,13 +121,14 @@ public class MainActivity extends AppCompatActivity {
     /************************* atribut fused lokasi ***************************/
 
 
-    TextView badgeSakit,badgePemantauan,badgeVerifikasi,badgeODP,badgeOTG,badgePOSITIF_COVID19;
+    TextView badgeSakit,badgePemantauan,badgeVerifikasi,badgeODP,badgeOTG,badgePOSITIF_COVID19,badgeSelesai;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         badgeODP = (TextView)findViewById(R.id.badgeODP);
         badgeOTG = (TextView)findViewById(R.id.badgeOTG);
@@ -134,10 +137,12 @@ public class MainActivity extends AppCompatActivity {
         badgeSakit = (TextView)findViewById(R.id.badgeSakit);
         badgeVerifikasi = (TextView)findViewById(R.id.badgeVerifikasi);
         badgePemantauan = (TextView)findViewById(R.id.badgePemantauan);
+        badgeSelesai = (TextView)findViewById(R.id.badgeSelesai);
 
         badgeSakit.setVisibility(View.INVISIBLE);
         badgeVerifikasi.setVisibility(View.INVISIBLE);
         badgePemantauan.setVisibility(View.INVISIBLE);
+        badgeSelesai.setVisibility(View.INVISIBLE);
 
         btnFormMasuk = (Button)findViewById(R.id.btnFormMasuk);
         //btnFormMasuk.setVisibility(View.INVISIBLE);
@@ -292,9 +297,15 @@ public class MainActivity extends AppCompatActivity {
                         badgeVerifikasi.setVisibility(View.VISIBLE);
                     }
 
+                    if(Integer.parseInt(response.getString("Selesai"))>0)
+                    {
+                        badgeSelesai.setVisibility(View.VISIBLE);
+                    }
+
                     badgePOSITIF_COVID19.setText("COVID19:"+response.getString("POSITIF_COVID19"));
                     badgeODP.setText("ODP:"+response.getString("ODP"));
                     badgeOTG.setText("OTG:"+response.getString("OTG"));
+                    badgeSelesai.setText("SELESAI:"+response.getString("Selesai"));
 
 
                 }catch (Exception e)
@@ -341,9 +352,15 @@ public class MainActivity extends AppCompatActivity {
                 badgeVerifikasi.setVisibility(View.VISIBLE);
             }
 
+            if(Integer.parseInt(intent.getStringExtra("Selesai"))>0)
+            {
+                badgeSelesai.setVisibility(View.VISIBLE);
+            }
+
             badgeODP.setText("ODP:"+intent.getStringExtra("ODP"));
             badgeOTG.setText("OTG:"+intent.getStringExtra("OTG"));
             badgePOSITIF_COVID19.setText("COVID19:"+intent.getStringExtra("POSITIF_COVID19"));
+            badgeSelesai.setText("SELESAI:"+intent.getStringExtra("Selesai"));
 
         }
     };
@@ -361,7 +378,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void startService() {
         Intent serviceIntent = new Intent(this, ServiceUpload.class);
-        serviceIntent.putExtra("inputExtra", "Uploading...");
+        serviceIntent.putExtra("inputExtra", "AutoSync...");
 
         ContextCompat.startForegroundService(this, serviceIntent);
     }

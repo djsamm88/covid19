@@ -15,6 +15,7 @@ import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
@@ -53,6 +54,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class FormActivityMasuk extends AppCompatActivity {
     ImageView foto_ktp,foto_orang;
@@ -240,13 +244,28 @@ public class FormActivityMasuk extends AppCompatActivity {
                 try {
                     new DbTransaksi(getApplicationContext()).insert(modelData);
                     //startActivity(new Intent(getApplicationContext(),FormActivityMasuk.class));
-
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference("notif");
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            /** datetime sekarang **/
+                            Date c = Calendar.getInstance().getTime();
+                            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            final String tgl_updatenya = df.format(c);
+                            /** datetime sekarang **/
+                            myRef.setValue("Ada data MASUK baru, "+tgl_updatenya);
+                        }
+                    }, 1000);
                     finish();
                     Toast.makeText(getApplicationContext(),"Berhasil menambah data.",Toast.LENGTH_SHORT).show();
                 }catch (Exception e)
                 {
                     System.out.println(e);
                 }
+
+
 
             }
         });

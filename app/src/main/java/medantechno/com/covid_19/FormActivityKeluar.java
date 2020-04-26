@@ -15,6 +15,7 @@ import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
@@ -39,6 +40,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -264,6 +267,22 @@ public class FormActivityKeluar extends AppCompatActivity {
                     new DbTransaksi(getApplicationContext()).insert(modelData);
                     //startActivity(new Intent(getApplicationContext(),FormActivityMasuk.class));
 
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference("notif");
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            /** datetime sekarang **/
+                            Date c = Calendar.getInstance().getTime();
+                            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            final String tgl_updatenya = df.format(c);
+                            /** datetime sekarang **/
+                            myRef.setValue("Ada data KELUAR baru, "+tgl_updatenya);
+                        }
+                    }, 1000);
+
+
                     finish();
                     Toast.makeText(getApplicationContext(),"Berhasil menambah data.",Toast.LENGTH_SHORT).show();
 
@@ -271,6 +290,9 @@ public class FormActivityKeluar extends AppCompatActivity {
                 {
                     System.out.println(e);
                 }
+
+
+
 
             }
         });

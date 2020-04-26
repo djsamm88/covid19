@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "563143836573",
+    "firebase_url": "https://covid-19-e8816.firebaseio.com",
+    "project_id": "covid-19-e8816",
+    "storage_bucket": "covid-19-e8816.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563143836573:android:56820aa3ea9cb42c9a2574",
+        "android_client_info": {
+          "package_name": "medantechno.com.covid_19"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "563143836573-dj7r86emiklr9i3rlqm9gh7o9oq3g85b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "medantechno.com.covid_19",
+            "certificate_hash": "9bf617b0c89711441454e3c36b29e0a99596de39"
+          }
+        },
+        {
+          "client_id": "563143836573-hbspvttolofjg7oc9h87dfhmnb19obp1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkV0BLE4EDhEGwaAPOFD0c8-XRouLUy_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "563143836573-hbspvttolofjg7oc9h87dfhmnb19obp1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

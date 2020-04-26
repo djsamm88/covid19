@@ -42,6 +42,11 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,6 +64,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
+
+import static android.content.ContentValues.TAG;
 
 public class ServiceUpload extends Service {
     public static final String CHANNEL_ID = "covid19";
@@ -106,24 +113,7 @@ public class ServiceUpload extends Service {
         Toast.makeText(getApplicationContext(),"Hello",Toast.LENGTH_SHORT);
 
 
-
-        /******* auto refresh **********/
-
-        final Handler handler = new Handler();
-        Runnable refresh = new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("delay");
-                /******* action disini nanti************/
-
-                sinkron();
-                /******* action disini nanti************/
-                handler.postDelayed(this, 10000);//10 detik
-            }
-        };
-        handler.postDelayed(refresh, 10000);//10 detik
-
-        /******* auto refresh **********/
+        dbFire(this);
 
 
         panggilByStatus("Selesai");
@@ -131,27 +121,7 @@ public class ServiceUpload extends Service {
         panggilByStatus("Pemantauan");
         panggilByStatus("Verifikasi");
         sinkron();
-
-
-        /******* auto refresh **********/
-
-        final Handler handlerP = new Handler();
-        Runnable refreshP = new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("delay");
-                /******* action disini nanti************/
-                panggilByStatus("Selesai");
-                panggilByStatus("Sakit");
-                panggilByStatus("Pemantauan");
-                panggilByStatus("Verifikasi");
-                /******* action disini nanti************/
-                handlerP.postDelayed(this, 40000);//30 detik
-            }
-        };
-        handlerP.postDelayed(refreshP, 40000);//30 detik
-
-        /******* auto refresh **********/
+        badge();
 
 
 
@@ -165,14 +135,10 @@ public class ServiceUpload extends Service {
                 /******* action disini nanti************/
                 badge();
                 /******* action disini nanti************/
-                handlerBadge.postDelayed(this, 10000);//30 detik
+                handlerBadge.postDelayed(this, 10000);//10 detik
             }
         };
-        handlerBadge.postDelayed(refreshBadge, 10000);//30 detik
-
-        /******* auto refresh **********/
-
-
+        handlerBadge.postDelayed(refreshBadge, 10000);//10 detik
 
 
         //stopSelf();
@@ -212,7 +178,7 @@ public class ServiceUpload extends Service {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel serviceChannel = new NotificationChannel(
                     CHANNEL_ID,
-                    "Foreground Service Channel",
+                    "ChannelCovid19",
                     NotificationManager.IMPORTANCE_DEFAULT
             );
 
@@ -296,7 +262,7 @@ public class ServiceUpload extends Service {
     public class MyLocationListener implements LocationListener {
 
         public void onLocationChanged(final Location loc) {
-            Log.i("*****", "Location changed");
+            //Log.i("*****", "Location changed");
             if (isBetterLocation(loc, previousBestLocation)) {
                 loc.getLatitude();
                 loc.getLongitude();
@@ -304,8 +270,8 @@ public class ServiceUpload extends Service {
                 intent.putExtra("Longitude", loc.getLongitude());
                 intent.putExtra("Provider", loc.getProvider());
                 sendBroadcast(intent);
-                System.out.println("lat service="+loc.getLatitude());
-                System.out.println("lng service="+loc.getLongitude());
+                //System.out.println("lat service="+loc.getLatitude());
+                //System.out.println("lng service="+loc.getLongitude());
 
 
                 Date cDate = new Date();
@@ -579,7 +545,7 @@ public class ServiceUpload extends Service {
                         {
 
                         }
-                        notifSound();
+                        //notifSound();
 
                         /** ganti status dari online **/
 
@@ -675,4 +641,75 @@ public class ServiceUpload extends Service {
             e.printStackTrace();
         }
     }
+
+
+    private void dbFire(Context context)
+    {
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("notif");
+        //myRef.setValue("Hello, World!");
+        // Read from the database
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                Log.d(TAG, "INI_AJA_NOTIF: " + value);
+
+
+                notifnya("Pemberitahuan",value);
+
+                panggilByStatus("Selesai");
+                panggilByStatus("Sakit");
+                panggilByStatus("Pemantauan");
+                panggilByStatus("Verifikasi");
+                sinkron();
+                badge();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "INI_AJA_NOTIF_cancel.", error.toException());
+            }
+        });
+    }
+
+
+    public void notifnya(String title,String konten)
+    {
+
+        /****************  notif **********/
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
+                notificationIntent, 0);
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, "1")
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setAutoCancel(true)
+                .setContentTitle(title)
+                .setContentText(konten)
+                .setContentIntent(pendingIntent)
+                .setPriority(NotificationCompat.PRIORITY_HIGH);
+        Notification notif = mBuilder.build();
+
+
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        // Since android Oreo notification channel is needed.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("1",
+                    "sinkronisasi",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            mNotificationManager.createNotificationChannel(channel);
+        }
+
+
+        mNotificationManager.notify(2, notif);
+        notifSound();
+        /**************** notif **********/
+    }
+
 }
