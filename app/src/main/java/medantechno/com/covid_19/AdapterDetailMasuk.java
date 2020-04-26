@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.util.Base64;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -183,9 +184,18 @@ public class AdapterDetailMasuk extends BaseAdapter {
             }
         });
 
+        /*** mengambil ukuran layar hp ****/
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int width = displayMetrics.widthPixels;
+        int height = displayMetrics.heightPixels;
+        /*** mengambil ukuran layar hp ****/
+
         builder.addContentView(imageView, new RelativeLayout.LayoutParams(
-                700,
-                1100));
+                width,
+                height));
+
+
         builder.show();
     }
 }

@@ -1,17 +1,21 @@
 package medantechno.com.covid_19;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -69,8 +73,12 @@ public class AdapterSakit extends BaseAdapter {
         LinearLayout ln = (LinearLayout) convertView.findViewById(R.id.linear_klik);
         TextView nama  = (TextView) convertView.findViewById(R.id.nama);
         TextView jenis = (TextView) convertView.findViewById(R.id.jenis);
+
         PhotoView foto_ktp = (PhotoView) convertView.findViewById(R.id.foto_ktp);
         PhotoView foto_orang = (PhotoView) convertView.findViewById(R.id.foto_orang);
+
+
+
         TextView tgl_update =(TextView)convertView.findViewById(R.id.tgl_update);
 
         TextView no_hp =(TextView)convertView.findViewById(R.id.no_hp);
@@ -104,6 +112,21 @@ public class AdapterSakit extends BaseAdapter {
         sudah_sinkron.setText(mData.getSudah_sinkron()+"-"+mData.getStatus());
         latlng.setText(mData.getLat()+","+mData.getLng());
 
+
+        foto_ktp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showImage(mData.getFoto_ktp());
+            }
+        });
+
+
+        foto_orang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showImage(mData.getFoto_orang());
+            }
+        });
 
         kesehatan.setText(mData.getKesehatan());
         catatan_medis.setText(mData.getCatatan_medis());
@@ -173,8 +196,10 @@ public class AdapterSakit extends BaseAdapter {
     }
 
 
-    public void showImage(/*Bitmap imageUri*/String imageUri) {
-        final Dialog builder = new Dialog(activity);
+
+
+    public void showImage(String url) {
+        Dialog builder = new Dialog(activity);
         builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
         builder.getWindow().setBackgroundDrawable(
                 new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -188,10 +213,13 @@ public class AdapterSakit extends BaseAdapter {
 
         ImageView imageView = new ImageView(activity);
 
-        //imageView.setImageBitmap(imageUri);
-        File imgFile = new File(imageUri);
-        Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-        imageView.setImageBitmap(myBitmap);
+        try {
+            Picasso.with(activity)
+                    .load(url)
+                    .into(imageView);
+        }catch (Exception e){
+
+        }
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -200,9 +228,18 @@ public class AdapterSakit extends BaseAdapter {
             }
         });
 
+        /*** mengambil ukuran layar hp ****/
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int width = displayMetrics.widthPixels;
+        int height = displayMetrics.heightPixels;
+        /*** mengambil ukuran layar hp ****/
+
         builder.addContentView(imageView, new RelativeLayout.LayoutParams(
-                700,
-                1100));
+                width,
+                height));
+
         builder.show();
     }
+
 }

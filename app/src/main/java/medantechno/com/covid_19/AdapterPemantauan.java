@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -103,6 +104,22 @@ public class AdapterPemantauan extends BaseAdapter {
         latlng.setText(mData.getLat()+","+mData.getLng());
 
 
+
+        foto_ktp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showImage(mData.getFoto_ktp());
+            }
+        });
+
+
+        foto_orang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showImage(mData.getFoto_orang());
+            }
+        });
+
         try {
             Picasso.with(activity).load(mData.getFoto_ktp()).into(foto_ktp);
             Picasso.with(activity).load(mData.getFoto_orang()).into(foto_orang);
@@ -197,8 +214,8 @@ public class AdapterPemantauan extends BaseAdapter {
     }
 
 
-    public void showImage(/*Bitmap imageUri*/String imageUri) {
-        final Dialog builder = new Dialog(activity);
+    public void showImage(String url) {
+        Dialog builder = new Dialog(activity);
         builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
         builder.getWindow().setBackgroundDrawable(
                 new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -212,10 +229,13 @@ public class AdapterPemantauan extends BaseAdapter {
 
         ImageView imageView = new ImageView(activity);
 
-        //imageView.setImageBitmap(imageUri);
-        File imgFile = new File(imageUri);
-        Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-        imageView.setImageBitmap(myBitmap);
+        try {
+            Picasso.with(activity)
+                    .load(url)
+                    .into(imageView);
+        }catch (Exception e){
+
+        }
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -223,10 +243,18 @@ public class AdapterPemantauan extends BaseAdapter {
                 builder.cancel();
             }
         });
+/*** mengambil ukuran layar hp ****/
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int width = displayMetrics.widthPixels;
+        int height = displayMetrics.heightPixels;
+        /*** mengambil ukuran layar hp ****/
 
         builder.addContentView(imageView, new RelativeLayout.LayoutParams(
-                700,
-                1100));
+                width,
+                height));
+
         builder.show();
     }
+
 }
